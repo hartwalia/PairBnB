@@ -26,6 +26,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use clearance for user authentication
+gem 'clearance'
+
+# Use figaro to secure sensitive data
+gem 'figaro'
+
+# Use omniauth to authenticate facebook logins
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
