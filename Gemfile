@@ -7,6 +7,7 @@ gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -36,6 +37,18 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Use carrierwave for image uploading
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+# Use mini magick for processing
+gem 'mini_magick'
+
+gem 'sidekiq'
+
+gem 'braintree'
+
+gem 'gon'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -50,6 +63,8 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  gem "letter_opener"
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

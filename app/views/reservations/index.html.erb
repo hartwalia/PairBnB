@@ -1,0 +1,57 @@
+</br>
+<h1 class='text-center'>Your Reservations</h1>
+</br></br></br>	
+
+<%  @reservations.each do | reservation | %>
+
+	<div class="col-md-6 col-md-offset-3">	
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<h5 style ="float:right; "><%= link_to 'details', reservation_path(reservation.id) %></h5>
+		    <h3 class="panel-title"><strong><%= reservation.listing.name %></strong></h3>
+		  </div>
+		  <div class="panel-body">
+		    
+				<div class="row">
+					<div class="col-md-3">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= reservation.id %></span>
+								Reservation ID
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-md-3">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= reservation.listing.city %></span>
+								City
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-md-3">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= reservation.check_in %></span>
+								Check In
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-md-3">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= reservation.paid %></span>
+								Payment
+							</li>
+						</ul>
+					</div>
+				</div>
+
+		  </div>
+		</div>
+	</div>
+
+<% end %>

@@ -1,2 +1,23 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+</br>
+<% if @user.nil? %>
+
+<% elsif @user.id == current_user.id %>
+	<%= link_to 'Add Listing', new_listing_path, class: "btn btn-warning btn-sm" %>
+<% end %>
+
+<h1 class='text-center'><%= @title %></h1>
+</br></br></br>	
+
+<div class="container">
+	<div class="row">
+
+		<%  @listings.each do | listing | %>
+
+		<div class="col-sm-4">
+			<%= render partial: '/listings/show', locals: { listing: listing } %>
+		</div>
+
+		<% end %>
+
+	</div>
+</div>

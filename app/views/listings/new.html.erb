@@ -1,2 +1,72 @@
-<h1>Listings#new</h1>
-<p>Find me in app/views/listings/new.html.erb</p>
+<h1 class='text-center'>Add Listings</h1>
+
+<%= form_for @listing, html: { multipart: true } do |form| %>
+
+	<div class="row col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+
+			<div class="text-field input-group center-block">
+				<%= form.label :name %>
+				<%= form.text_field :name, type: "text" ,:class => 'form-control' %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :description %>
+				<%= form.text_field :description,type: "text" , :class => 'form-control' %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :city %>
+				<%= form.text_field :city,type: "text" , :class => 'form-control' %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :property_type %>
+				<%= form.select :property_type,['Apartment', 'House'],{},{:class => 'form-control'} %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :room_type %>
+				<%= form.select :room_type,['Entire home/apt','Private room','Shared room'],{},{:class => 'form-control'} %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :accommodates %>
+				<%= form.select :accommodates,[1,2,3,4,5,6,7,8,9,10], {},{:class => 'form-control'} %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :bedrooms %>
+				<%= form.select :bedrooms,[1,2,3,4], {},{:class => 'form-control'} %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :beds %>
+				<%= form.select :beds,[1,2,3,4,5,6,7,8], {},{:class => 'form-control'}%>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :bathrooms %>
+				<%= form.select :bathrooms,[1,2,3,4,5],{},{:class => 'form-control'} %>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :price %>
+				<%= form.text_field :price,type: "text", :class => 'form-control'%>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.label :images %>
+				<%= form.file_field :images, multiple: true, :class => 'form-control'%>
+			</div>
+
+			<div class="password-field input-group center-block">
+				<%= form.hidden_field :user_id,  value: current_user.id %>
+			</div>
+
+			<div class="submit-field text-center" style="margin-top: 50px">
+				<%= form.submit 'Done', :class => 'btn btn-lg btn-primary btn-block' %>
+			</div>
+
+	</div>
+
+<% end %>

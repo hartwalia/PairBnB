@@ -11,7 +11,7 @@ class SessionsController < Clearance::SessionsController
       @notice = "Signed in!"
     else
       user = User.create_with_auth_and_hash(authentication,auth_hash)
-      @next = edit_user_path(user)   
+      @next = root_url(user)   
       @notice = "User created - confirm or edit details..."
     end
     sign_in(user)

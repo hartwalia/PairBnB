@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hey, <%= @reservation.user.name %> !</h1>
+    </br>
+    <h2>===============================================</h2>
+    </br>
+    <h2>You have successfully booked <%= @reservation.listing.name %></h2>
+
+    <p>Details</p>
+
+    <p>Check In  : <%= @reservation.check_in %></p>
+
+    <p>Check Out : <%= @reservation.check_out %></p>
+
+    <p>Duration  : <%= @reservation.duration %> nights</p>
+
+    <p>Total     : RM <%= @reservation.total_cost %></p>
+  </body>
+</html>

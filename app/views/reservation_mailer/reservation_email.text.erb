@@ -1,0 +1,15 @@
+Hey, <%= @reservation.user.name %> !
+
+===============================================
+ 
+You have successfully booked <%= @reservation.listing.name %>,
+
+Details
+
+Check In  : <%= @reservation.check_in %>
+
+Check Out : <%= @reservation.check_out %>
+
+Duration  : <%= @reservation.duration %>
+
+Total     : <%= @reservation.total_cost %>

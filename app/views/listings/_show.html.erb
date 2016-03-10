@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+            <div class="post">
+                <div class="post-img-content">
+                    <%= image_tag(listing.images[0].url(:resized).to_s, class: "img-responsive") %>
+                    <span class="post-title"><b><%= listing.name%></b>
+                    </br>
+                    <b>$ <%= listing.price%> </b></span>
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <b><%= listing.property_type%></b> | <%= listing.city %>
+                    </div>
+                    <div>
+                        <%= listing.description %>
+                    </div>
+                    </br>
+                    <div>
+                        <%= link_to 'Read more', listing_path(listing.id), class: "btn btn-warning btn-sm" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</br>

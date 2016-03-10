@@ -1,2 +1,144 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<!-- Include Required Prerequisites -->
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+</br></br>
+
+<h1 class='text-center'><%= @listing.name %></h1>
+
+</br></br>
+
+<div class="container">
+
+	<div class="row">
+		<div id="myCarousel" class="carousel fdi-Carousel slide">
+			<!-- Carousel items -->
+			<div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
+				<div class="carousel-inner onebyone-carosel">
+					<div class="item active">
+						<div class="col-md-4">
+							<a href="#"><%= image_tag(@listing.images[0].url(:resized).to_s, class: "img-responsive") %></a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col-md-4">
+							<a href="#"><%= image_tag(@listing.images[1].url(:resized).to_s, class: "img-responsive") %></a>
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#eventCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+				<a class="right carousel-control" href="#eventCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+			</div>
+		</div>
+	</div>
+
+</br></br>
+
+	<div class="row">
+		<div class="col-md-7 col-md-offset-2">
+			<div class="thumbnail">
+				<div class="caption-full">
+					</br>
+					<div class="pull-right"><b>By | </b><%= @user.name %></div>
+					<h4 class="text-left"><strong>About this listing</strong></h4>
+					<p><%= @listing.description %></p>
+					</br>
+
+					<h4 class="text-left"><strong>The Space</strong></h4>
+					</br>
+
+					<div class="row">
+						<div class="col-md-5 col-md-offset-1">
+							<ul class="list-group">
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.city %></span>
+									Located in 
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.property_type %></span>
+									Property type
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.room_type %></span>
+									Room type
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge">$ <%= @listing.price %></span>
+									per night
+								</li>
+							</ul>
+						</div>
+
+						<div class="col-md-5">
+							<ul class="list-group">
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.accommodates %></span>
+									Accomodates
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.bedrooms %></span>
+									Bedrooms
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.beds %></span>
+									Beds
+								</li>
+								</br>
+								<li class="list-group-item">
+									<span class="badge"><%= @listing.bathrooms %></span>
+									Bathrooms
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% if @listing.user.id != current_user.id %>
+			<%= form_for :reservation, url: reservations_path do |f| %>
+
+				<div class="col-md-2 fixed">
+				  <div class="password-field input-group center-block">
+						<%= f.label :check_in %>
+						<%= f.date_field :check_in, class: 'form-control'%>
+					</div>
+
+				  <div class="password-field input-group center-block">
+						<%= f.label :check_out %>
+						<%= f.date_field :check_out, class: 'form-control'%>
+					</div>
+
+				  <%= f.hidden_field :listing_id, value: @listing.id %>
+
+				  <div class="submit-field text-center" style="margin-top: 50px">
+						<%= f.submit 'Book', :class => 'btn btn-md btn-primary btn-block' %>
+					</div>
+				</div>
+
+			<% end %>
+		<% end %>
+
+		</br>
+
+<% if signed_in? %>
+	<% if current_user.id == @user.id %>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+					<%= link_to 'Edit', edit_listing_path(@listing.id), class: "btn btn-warning btn-sm" %>
+					<%= link_to 'Delete', edit_listing_path(@listing.id), class: "btn btn-warning btn-sm" %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>
